@@ -7,24 +7,35 @@ Se a pessoa responder positivamente a 2 questões ela deve ser classificada como
 print("==============================================")
 interrogado=input("Digite seu nome: ")
 print("--------------------")
-print()
 
 print("RESPONDA TODAS AS PERGUNTAS COM 'S' PARA SIM E 'N' PARA NÃO")
-pergunta1=input("Você telefonou para a vítima? ")
-pergunta2=input("Esteve no local do crime? ")
-pergunta3=input("Mora perto da vítima? ")
-pergunta4=input("Devia para a vítima? ")
-pergunta5=input("Já trabalhou com a vítima? ")
+pergunta1=input("Você telefonou para a vítima? ").upper()
+pergunta2=input("Esteve no local do crime? ").upper()
+pergunta3=input("Mora perto da vítima? ").upper()
+pergunta4=input("Devia para a vítima? ").upper()
+pergunta5=input("Já trabalhou com a vítima? ").upper()
 print("==============================================")
-lista_perguntas=[pergunta1,pergunta2,pergunta3,pergunta4,pergunta5]
 
-if "N" in lista_perguntas==5 or "N" in lista_perguntas==4:
+# IF's
+contagem=0
+if pergunta1=="S":
+    contagem+=1
+if pergunta2=="S":
+    contagem+=1
+if pergunta3=="S":
+    contagem+=1
+if pergunta4=="S":
+    contagem+=1
+if pergunta5=="S":
+    contagem+=1
+
+if contagem<=1:
     status="INOCENTE"
-elif "N" in lista_perguntas==3:
+elif contagem==2:
     status="SUSPEITO"
-elif "N" in lista_perguntas==2 or "N" in lista_perguntas==1:
+elif contagem<=4:
     status="CÚMPLICE"
-elif "N" in lista_perguntas==0:
+elif contagem>=5:
     status="ASSASSINO"
 
-print(status)
+print(f"{interrogado} é {status}")
